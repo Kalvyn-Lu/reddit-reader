@@ -4,7 +4,8 @@ class Login extends React.Component {
 	render() {
 		return(
 			<div>
-				Thing!
+				{this.props.route.id}
+				boper
 			</div>
 		);
 	}
