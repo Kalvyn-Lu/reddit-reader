@@ -6,7 +6,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './client/app/routes.jsx';
 import bodyParser from 'body-parser';
-import NotFoundPage from './client/app/components/NotFoundPage.jsx';
+import {NotFoundPage} from './client/app/components/NotFoundPage.jsx';
 
 // initialize the server and configure support for ejs templates
 const app = new Express();
@@ -31,6 +31,7 @@ app.get('*', (req, res) => {
 
       // in case of error display the error message
       if (err) {
+        console.log(err);
         return res.status(500).send(err.message);
       }
 

@@ -1,12 +1,13 @@
 import React from 'react';
-import {render} from 'react-dom';
 
-export class Layout extends React.Component {
+class Layout extends React.Component {
   render () {
     return (
       <div className="app-container">
-        
+      	{this.props.children}
       </div>
     );
   }
 }
+
+export default Layout;
