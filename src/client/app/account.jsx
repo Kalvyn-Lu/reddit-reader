@@ -1,13 +1,15 @@
+import $ from 'jquery';
+
 const address = 'localhost:3000'
 class Account {
 	constructor() {
 		this.data = {
-			hashId = "",
-			liked = []
+			hashId : "",
+			liked : []
 		}
 	}
 
-	function login(username, password, callback) {
+	login(username, password, callback) {
 		$.post(address+'/account', username+password, function(data, status) {
 			
 		});
