@@ -24,10 +24,15 @@ class Listing extends React.Component {
               listing.push(<h1>{post.data.title}</h1>);
               listing.push(<p>{"URL: " + post.data.url}</p>);
               listing.push(<p>{"Permalink: " + post.data.permalink}</p>);
-              
-              if(post.data.secure_media_embed) {
-                  listing.push($('<div/>').html(post.data.secure_media_embed).contents());
+              listing.push(<p>{"Comments: " + post.data.num_comments}</p>);
+
+              if(post.data.secure_media_embed.content) {
+                let wrapperDiv = document.createElement('div');
+                wrapperDiv.innerHTML = post.data.secure_media_embed.content;
+                listing.push(<div dangerouslySetInnerHTML={{ __html: wrapperDiv.childNodes[0].nodeValue}} />);
               }
+
+              
               
               listing.push(<hr/>);
             }
