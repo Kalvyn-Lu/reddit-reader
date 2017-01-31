@@ -35,16 +35,28 @@ app.post('/account', (req, res)=> {
   var hashed = tempHash(req.body.username, req.body.password);
   
   if(tempAccountMap[hashed]) {
+    res.status(200);
     res.send({hashed: tempHash(req.body.username, req.body.password), 
       favorited: tempAccountMap[hashed].favorited});
   } else {
+    res.status(400);
     res.send({status: 400});
   }
   
 });
 
 app.post('/newAccount', (req, res) => {
-  
+  var hashed = tempHash(req.body.username, req.body.username);
+  if(tempAccountMap[hashed]) {
+    res.status(400);
+    res.send({status: 400});
+  } else {
+    tempAccountMap[hashed] = {
+      favorited:[]
+    }
+    res.status(200);
+    res.send({status:200});
+  }
 });
 
 app.post('/favorite', (req, res) => {
@@ -57,6 +69,8 @@ app.post('/favorite', (req, res) => {
   } else {
     tempAccountMap[accountHash].favorited = tempAccountMap[accountHash].favorited.splice(index, 1);
   }
+  res.status(200);
+  res.send({status: 200});
 });
 
 
