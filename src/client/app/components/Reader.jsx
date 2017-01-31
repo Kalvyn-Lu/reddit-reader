@@ -13,7 +13,6 @@ class Reader extends React.Component {
     }
     
     componentDidMount() {
-        console.log(this.props.route.account.data);
         $.getJSON("https://www.reddit.com/" + this.props.params.sub + ".json", (data) => {
             this.setState({
                 subJson: data

@@ -8,6 +8,14 @@ import routes from './client/app/routes.jsx';
 import bodyParser from 'body-parser';
 import {NotFoundPage} from './client/app/components/NotFoundPage.jsx';
 
+//Temporary account store until we use a persisting database
+var tempAccountMap = {};
+
+//Temporary hash function until we find a password hash solution
+function tempHash(username, password) {
+  return username + password;
+}
+
 // initialize the server and configure support for ejs templates
 const app = new Express();
 const server = new Server(app);
@@ -24,7 +32,19 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/account', (req, res)=> {
-  res.send({hashed: req.body.username + req.body.password});
+  let hashed = tempHash(req.body.username, req.body.password);
+  
+  if(tempAccountMap[hashed]) {
+    res.send({hashed: tempHash(req.body.username, req.body.password), 
+      favorited: tempAccountMap[hashed].favorited});
+  } else {
+    res.send({status: 400});
+  }
+  
+});
+
+app.post('/favorite', (req, res) => {
+  
 });
 
 
