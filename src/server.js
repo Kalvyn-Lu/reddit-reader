@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/account', (req, res)=> {
-  let hashed = tempHash(req.body.username, req.body.password);
+  var hashed = tempHash(req.body.username, req.body.password);
   
   if(tempAccountMap[hashed]) {
     res.send({hashed: tempHash(req.body.username, req.body.password), 
@@ -43,8 +43,20 @@ app.post('/account', (req, res)=> {
   
 });
 
-app.post('/favorite', (req, res) => {
+app.post('/newAccount', (req, res) => {
   
+});
+
+app.post('/favorite', (req, res) => {
+  var accountHash = req.body.hashId;
+  var postId = req.body.newFavorite;
+  
+  var index = tempAccountMap[accountHash].favorited.indexOf(postId);
+  if(index == -1) {
+    tempAccountMap[accountHash].favorited.push(postId);
+  } else {
+    tempAccountMap[accountHash].favorited = tempAccountMap[accountHash].favorited.splice(index, 1);
+  }
 });
 
 
