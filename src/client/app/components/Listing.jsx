@@ -47,7 +47,7 @@ class Listing extends React.Component {
               let postId = post.data.id;
 
               listing.push(<button key={"post" + count++} onClick={() => {account.handleFavorite(postId, () => {
-                self.setState({favorited: self.state.favorited.concat([postId])});
+                self.setState({favorited: account.data.favorited});
               })}}>
                 {self.state.favorited.includes(postId) ? "Favorited!" : "Not Favorited"}
               </button>);
