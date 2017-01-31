@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
+import Listing from './Listing.jsx';
+
 class Reader extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +24,7 @@ class Reader extends React.Component {
     render() {
         return(
             <div className="reader-container">
-                
+                <Listing subObject={this.state.subJson}/>
             </div>
         );
     }
