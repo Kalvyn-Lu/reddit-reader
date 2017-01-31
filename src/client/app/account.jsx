@@ -1,17 +1,20 @@
 import $ from 'jquery';
+import {address} from './constants.jsx';
 
-const address = 'localhost:3000'
-class Account {
+export class Account {
 	constructor() {
 		this.data = {
 			hashId : "",
 			liked : []
 		}
+		
+		this.login = this.login.bind(this);
 	}
 
 	login(username, password, callback) {
-		$.post(address+'/account', username+password, function(data, status) {
-			
+		$.post(address+'/account', {username: username, password: password}, (data, status) => {
+			this.data.hashId = data.hashed;
+			callback(data, status);
 		});
 	}
 }

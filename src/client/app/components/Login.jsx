@@ -1,13 +1,53 @@
 import React from 'react';
+import {Account} from '../account.jsx';
+import {address} from '../constants.jsx';
 
 class Login extends React.Component {
+	constructor(props) {
+		super(props);
+		
+		this.state = {
+			username: "",
+			password: ""
+		}
+	}
+	
 	render() {
 		return(
-			<div>
-				{this.props.route.id}
-				boper
+			<div className="login">
+				<form onSubmit={(event) => {this.handleSubmit(event, 
+					this.props.route.account, 
+					this.state.username, 
+					this.state.password)}}>
+					
+					<label>
+						Username:
+						<input type="text" name="username" onChange={(event)=> {
+							this.setState({
+								username:event.target.value
+							});
+						}}/>
+					</label>
+					
+					<label>
+						Password:
+						<input type="text" name="password" onChange={(event)=> {
+							this.setState({
+								password:event.target.value
+							});
+						}}/>
+					</label>
+					<input type="submit" value="Submit"/>
+				</form>
 			</div>
 		);
+	}
+	
+	handleSubmit(event, account, username, password) {
+		account.login(username, password, (data, status) => {
+			
+		});
+		event.preventDefault();
 	}
 }
 

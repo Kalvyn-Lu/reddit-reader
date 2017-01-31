@@ -23,6 +23,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+app.post('/account', (req, res)=> {
+  res.send({hashed: req.body.username + req.body.password});
+});
+
+
 // universal routing and rendering
 app.get('*', (req, res) => {
   match(
