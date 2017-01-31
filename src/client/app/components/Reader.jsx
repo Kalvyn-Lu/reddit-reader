@@ -8,11 +8,12 @@ class Reader extends React.Component {
         super(props);
 
         this.state = {
-            subJson: []
+            subJson: {}
         }
     }
     
     componentDidMount() {
+        console.log(this.props.route.account.data);
         $.getJSON("https://www.reddit.com/" + this.props.params.sub + ".json", (data) => {
             this.setState({
                 subJson: data
@@ -24,7 +25,7 @@ class Reader extends React.Component {
     render() {
         return(
             <div className="reader-container">
-                <Listing subObject={this.state.subJson}/>
+                <Listing subObject={this.state.subJson} account={this.props.route.account}/>
             </div>
         );
     }
