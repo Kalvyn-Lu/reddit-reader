@@ -45,10 +45,16 @@ class Login extends React.Component {
 	
 	handleSubmit(event, account, username, password) {
 		account.login(username, password, (data, status) => {
-			
+			this.props.router.push('/reader/hot');
 		});
 		event.preventDefault();
 	}
 }
+
+Login.propTypes = {
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired
+  }).isRequired
+};
 
 export default Login;
