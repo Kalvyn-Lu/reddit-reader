@@ -61,11 +61,11 @@ app.post('/newAccount', (req, res) => {
 
 app.post('/favorite', (req, res) => {
   var accountHash = req.body.hashId;
-  var postId = req.body.newFavorite;
+  var post = req.body.newFavorite;
   
-  var index = tempAccountMap[accountHash].favorited.indexOf(postId);
+  var index = tempAccountMap[accountHash].favorited.indexOf(post);
   if(index == -1) {
-    tempAccountMap[accountHash].favorited.push(postId);
+    tempAccountMap[accountHash].favorited.push(post);
   } else {
     tempAccountMap[accountHash].favorited.splice(index, 1);
   }

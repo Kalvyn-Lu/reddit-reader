@@ -45,12 +45,10 @@ class Listing extends React.Component {
                 listing.push(<div key={"post" + count++} dangerouslySetInnerHTML={{ __html: wrapperDiv.childNodes[0].nodeValue}} />);
               }
 
-              let postId = post.data.id;
-
-              listing.push(<button key={"post" + count++} onClick={() => {account.handleFavorite(postId, () => {
+              listing.push(<button key={"post" + count++} onClick={() => {account.handleFavorite(post, () => {
                 self.setState({favorited: account.data.favorited});
               })}}>
-                {self.state.favorited.includes(postId) ? "Favorited!" : "Not Favorited"}
+                {self.state.favorited.includes(post) ? "Favorited!" : "Not Favorited"}
               </button>);
 
               listing.push(<hr key={i++}/>);

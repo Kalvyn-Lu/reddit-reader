@@ -22,12 +22,11 @@ export class Account {
 		});
 	}
 
-	handleFavorite(id, callback) {
-		$.post(address+'/favorite', {hashId:this.data.hashId, newFavorite: id}, (data, status) => {
-			let index = this.data.favorited.indexOf(id);
+	handleFavorite(post, callback) {
+		$.post(address+'/favorite', {hashId:this.data.hashId, newFavorite: post}, (data, status) => {
+			let index = this.data.favorited.indexOf(post);
 			if(index == -1) {
-				console.log(id);
-				this.data.favorited.push(id);
+				this.data.favorited.push(post);
 			} else {
 				this.data.favorited.splice(index, 1);
 			}
