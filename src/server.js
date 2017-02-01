@@ -67,7 +67,7 @@ app.post('/favorite', (req, res) => {
   if(index == -1) {
     tempAccountMap[accountHash].favorited.push(postId);
   } else {
-    tempAccountMap[accountHash].favorited = tempAccountMap[accountHash].favorited.splice(index, 1);
+    tempAccountMap[accountHash].favorited.splice(index, 1);
   }
   res.status(200);
   res.send({status: 200});
