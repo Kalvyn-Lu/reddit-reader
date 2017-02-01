@@ -32,13 +32,13 @@ export class Account {
 				this.data.favorited.splice(index, 1);
 			}
 			callback(data,status);
-		});
+		},"json");
 	}
 	
 	create(username, password, callback, errorCallback) {
 		$.post(address+'/newAccount', {username: username, password: password}, (data, status) => {
 			callback(data, status);
-		}).fail(() => {
+		},"json").fail(() => {
 			errorCallback();
 		});
 	}
