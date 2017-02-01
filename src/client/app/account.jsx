@@ -25,8 +25,9 @@ export class Account {
 	handleFavorite(id, callback) {
 		$.post(address+'/favorite', {hashId:this.data.hashId, newFavorite: id}, (data, status) => {
 			let index = this.data.favorited.indexOf(id);
-			if(index > -1) {
-				this.data.favorited.push(data.favorited);
+			if(index == -1) {
+				console.log(id);
+				this.data.favorited.push(id);
 			} else {
 				this.data.favorited = this.data.favorited.splice(index, 1);
 			}
