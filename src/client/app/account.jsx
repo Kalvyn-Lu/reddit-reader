@@ -24,9 +24,10 @@ export class Account {
 
 	handleFavorite(post, callback) {
 		$.post(address+'/favorite', {hashId:this.data.hashId, newFavorite: post}, (data, status) => {
-			let index = this.data.favorited.indexOf(post);
+			let index = this.indexOfPost(post);
 			if(index == -1) {
 				this.data.favorited.push(post);
+				console.log(this.data.favorited);
 			} else {
 				this.data.favorited.splice(index, 1);
 			}
@@ -41,4 +42,12 @@ export class Account {
 			errorCallback();
 		});
 	}
+	
+    indexOfPost(post) {
+        for(let i = 0; i < this.data.favorited.length; i++) {
+            let listId = this.data.favorited[i].data.id;
+            if(listId == post.data.id) return i;
+        }
+        return -1;
+    }
 }

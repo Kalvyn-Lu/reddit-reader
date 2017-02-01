@@ -35,7 +35,7 @@ class Listing extends React.Component {
             data.data.children,
             function (i, post) {
              listing.push(
-                 <Post post={post} favorited={self.state.favorited.includes(post)} onButtonClick={() => {
+                 <Post post={post} favorited={account.indexOfPost(post) != -1} onButtonClick={() => {
                     account.handleFavorite(post, () => {
                         self.setState({favorited: account.data.favorited});
                     })
@@ -46,6 +46,8 @@ class Listing extends React.Component {
         
         return listing;
     }
+    
+
 }
 
 Listing.propTypes = {

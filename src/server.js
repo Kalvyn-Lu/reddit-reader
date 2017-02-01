@@ -59,11 +59,21 @@ app.post('/newAccount', (req, res) => {
   }
 });
 
+function indexOfPost(accountHash, post) {
+  let list = tempAccountMap[accountHash].favorited;
+  
+  for(let i = 0; i < list.length; i++) {
+      let listId = list[i].data.id;
+      if(listId == post.data.id) return i;
+  }
+  return -1;
+}
+
 app.post('/favorite', (req, res) => {
   var accountHash = req.body.hashId;
   var post = req.body.newFavorite;
   
-  var index = tempAccountMap[accountHash].favorited.indexOf(post);
+  var index = indexOfPost(accountHash, post);
   if(index == -1) {
     tempAccountMap[accountHash].favorited.push(post);
   } else {
