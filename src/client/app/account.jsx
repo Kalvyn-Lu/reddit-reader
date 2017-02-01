@@ -29,7 +29,7 @@ export class Account {
 				console.log(id);
 				this.data.favorited.push(id);
 			} else {
-				this.data.favorited = this.data.favorited.splice(index, 1);
+				this.data.favorited.splice(index, 1);
 			}
 			callback(data,status);
 		});
