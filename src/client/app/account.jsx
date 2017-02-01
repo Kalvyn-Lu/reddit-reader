@@ -17,7 +17,7 @@ export class Account {
 			this.data.hashId = data.hashed;
 			this.data.favorited = data.favorited ? data.favorited : [];
 			successCallback(data, status);
-		}).fail(() => {
+		}, "json").fail(() => {
 			errorCallback();
 		});
 	}
