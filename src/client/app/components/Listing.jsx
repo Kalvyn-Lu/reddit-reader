@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router';
+import Post from './Post.jsx';
 
 class Listing extends React.Component {
     constructor(props) {
@@ -34,24 +35,13 @@ class Listing extends React.Component {
         $.each(
             data.data.children,
             function (i, post) {
-              listing.push(<h1 key={"post" + count++}>{post.data.title}</h1>);
-              listing.push(<p key={"post" + count++}>{"URL: " + post.data.url}</p>);
-              listing.push(<p key={"post" + count++}>{"Permalink: " + post.data.permalink}</p>);
-              listing.push(<p key={"post" + count++}>{"Comments: " + post.data.num_comments}</p>);
-
-              if(post.data.secure_media_embed.content) {
-                let wrapperDiv = document.createElement('div');
-                wrapperDiv.innerHTML = post.data.secure_media_embed.content;
-                listing.push(<div key={"post" + count++} dangerouslySetInnerHTML={{ __html: wrapperDiv.childNodes[0].nodeValue}} />);
-              }
-
-              listing.push(<button key={"post" + count++} onClick={() => {account.handleFavorite(post, () => {
-                self.setState({favorited: account.data.favorited});
-              })}}>
-                {self.state.favorited.includes(post) ? "Favorited!" : "Not Favorited"}
-              </button>);
-
-              listing.push(<hr key={i++}/>);
+             listing.push(
+                 <Post post={post} favorited={self.state.favorited.includes(post)} onButtonClick={() => {
+                    account.handleFavorite(post, () => {
+                        self.setState({favorited: account.data.favorited});
+                    })
+                 }}/>
+             );
             }
         )
         
