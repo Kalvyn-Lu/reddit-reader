@@ -53,7 +53,6 @@ app.post('/newAccount', (req, res) => {
     tempAccountMap[hashed] = {
       favorited:[]
     }
-    console.log("made an account with" + hashed);
     res.status(200);
     res.send({status:200});
   }

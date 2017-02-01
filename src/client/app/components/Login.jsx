@@ -32,7 +32,7 @@ class Login extends React.Component {
 					
 					<label>
 						Password:
-						<input type="text" name="password" onChange={(event)=> {
+						<input type="password" name="password" onChange={(event)=> {
 							this.setState({
 								password:event.target.value
 							});
@@ -57,7 +57,7 @@ class Login extends React.Component {
 					
 					<label>
 						Password:
-						<input type="text" name="passwordCreate" onChange={(event)=> {
+						<input type="password" name="passwordCreate" onChange={(event)=> {
 							this.setState({
 								password:event.target.value
 							});
