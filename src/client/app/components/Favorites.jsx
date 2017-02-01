@@ -16,10 +16,9 @@ class Favorites extends React.Component {
     }
     
     render() {
-        
-        console.log(this.props.route.account.data);
         return (
             <div className="favorites-container">
+                <Link to="/reader/hot"><h2>Back to Reader</h2></Link>
                 {this.renderPosts(this.state.favorited, this.props.route.account)}
             </div>
         );
