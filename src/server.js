@@ -33,7 +33,6 @@ app.use(bodyParser.json());
 
 app.post('/account', (req, res)=> {
   var hashed = tempHash(req.body.username, req.body.password);
-  
   if(tempAccountMap[hashed]) {
     res.status(200);
     res.send({hashed: tempHash(req.body.username, req.body.password), 
@@ -46,7 +45,7 @@ app.post('/account', (req, res)=> {
 });
 
 app.post('/newAccount', (req, res) => {
-  var hashed = tempHash(req.body.username, req.body.username);
+  var hashed = tempHash(req.body.username, req.body.password);
   if(tempAccountMap[hashed]) {
     res.status(400);
     res.send({status: 400});
@@ -54,6 +53,7 @@ app.post('/newAccount', (req, res) => {
     tempAccountMap[hashed] = {
       favorited:[]
     }
+    console.log("made an account with" + hashed);
     res.status(200);
     res.send({status:200});
   }

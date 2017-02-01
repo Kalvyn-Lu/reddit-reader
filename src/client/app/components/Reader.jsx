@@ -25,7 +25,7 @@ class Reader extends React.Component {
     render() {
         return(
             <div className="reader-container">
-                <Link href="/favorites"><h1>Click here to see favorites</h1></Link>
+                <Link to="/favorites"><h1>Click here to see favorites</h1></Link>
                 <Listing subObject={this.state.subJson} account={this.props.route.account}/>
             </div>
         );
