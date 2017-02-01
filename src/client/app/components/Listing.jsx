@@ -13,7 +13,6 @@ class Listing extends React.Component {
     }
 
     render() {
-        console.log(this.state.favorited.length);
         return (
             <div className="listing-container">
                 {this.renderListing(this.props.subObject, this.props.account)}

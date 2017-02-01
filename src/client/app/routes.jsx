@@ -4,6 +4,7 @@ import {Route, IndexRoute, withRouter} from 'react-router';
 import Layout from './components/Layout.jsx';
 import Login from './components/Login.jsx';
 import Reader from './components/Reader.jsx'; 
+import Favorites from './components/Favorites.jsx';
 
 import {Account} from './account.jsx';
 
@@ -13,6 +14,7 @@ const routes = (
   <Route path="/" component={Layout}>
   	<IndexRoute account={account}  component={withRouter(Login)}/>
   	<Route path="reader/:sub" account={account} component={Reader} />
+  	<Route path="favorites" account={account} component={Favorites}/>
   </Route>
 );
 
