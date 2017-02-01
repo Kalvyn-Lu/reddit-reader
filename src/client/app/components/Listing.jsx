@@ -43,13 +43,10 @@ class Listing extends React.Component {
         let count = 0;
 
         let self = this;
-        console.log(max * self.state.listGroup);
-        console.log((self.state.listGroup + 1) * max);
         $.each(
             data.data.children,
             function (i, post) {
             if((count >= (max * self.state.listGroup)) && (count < ((self.state.listGroup + 1) * max))) {
-                console.log("count" + count);
                  listing.push(
                  <Post key={count} post={post} favorited={account.indexOfPost(post) != -1} onButtonClick={() => {
                     account.handleFavorite(post, () => {
