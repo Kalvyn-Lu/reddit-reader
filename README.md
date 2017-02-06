@@ -1,5 +1,5 @@
 # reddit-reader
-Small App to Read Reddit
+Bare-bones Reddit browser used to show API calls
 #Installation
 `clone` the repo and run `npm install`
 #Setup
